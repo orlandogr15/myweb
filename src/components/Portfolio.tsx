@@ -32,12 +32,12 @@ export default function Portfolio() {
         <aside className="sidebar" data-sidebar>
           <div className="sidebar-info">
             <figure className="avatar-box">
-              <img src="/assets/images/my-avatar.png" alt="Richard hanrick" width="80" />
+              <img src="/assets/images/my-avatar.png" alt="Orlando Gutiérrez Rojo" width="80" />
             </figure>
 
             <div className="info-content">
-              <h1 className="name" title="Richard hanrick">Richard hanrick</h1>
-              <p className="title">Web developer</p>
+              <h1 className="name" title="Orlando Gutiérrez Rojo">Orlando<br />Gutiérrez Rojo</h1>
+              <p className="title">Data Analyst</p>
             </div>
 
             <button className="info_more-btn" data-sidebar-btn>
