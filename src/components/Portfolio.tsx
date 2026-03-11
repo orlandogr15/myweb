@@ -98,7 +98,7 @@ export default function Portfolio() {
                 </div>
                 <div className="contact-info">
                   <p className="contact-title">Email</p>
-                  <a href="mailto:richard@example.com" className="contact-link">richard@example.com</a>
+                  <a href="mailto:ogutierrezrojo@gmail.com" className="contact-link">ogutierrezrojo@gmail.com</a>
                 </div>
               </li>
 
@@ -108,7 +108,7 @@ export default function Portfolio() {
                 </div>
                 <div className="contact-info">
                   <p className="contact-title">Phone</p>
-                  <a href="tel:+12133522795" className="contact-link">+1 (213) 352-2795</a>
+                  <a href="tel:+12133522795" className="contact-link">+52 (667) 272-0363</a>
                 </div>
               </li>
 
@@ -118,7 +118,7 @@ export default function Portfolio() {
                 </div>
                 <div className="contact-info">
                   <p className="contact-title">Birthday</p>
-                  <time dateTime="1982-06-23">June 23, 1982</time>
+                  <time dateTime="1982-06-23">March 3, 1995</time>
                 </div>
               </li>
 
@@ -128,7 +128,7 @@ export default function Portfolio() {
                 </div>
                 <div className="contact-info">
                   <p className="contact-title">Location</p>
-                  <address>Sacramento, California, USA</address>
+                  <address>Culiacán, México</address>
                 </div>
               </li>
             </ul>
@@ -137,12 +137,12 @@ export default function Portfolio() {
 
             <ul className="social-list">
               <li className="social-item">
-                <a href="#" className="social-link">
+                <a href="https://www.linkedin.com/in/orlando-gutierrez-rojo/" className="social-link">
                   <ion-icon name="logo-facebook"></ion-icon>
                 </a>
               </li>
               <li className="social-item">
-                <a href="#" className="social-link">
+                <a href="https://github.com/orlandogr15" className="social-link">
                   <ion-icon name="logo-twitter"></ion-icon>
                 </a>
               </li>
