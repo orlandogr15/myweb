@@ -1,16 +1,13 @@
 /// <reference types="vite/client" />
 
-declare global {
-  namespace JSX {
-    interface IntrinsicElements {
-      'ion-icon': IonIconProps;
-    }
+declare namespace JSX {
+  interface IntrinsicElements {
+    'ion-icon': IonIconProps;
   }
 }
 
-interface IonIconProps extends React.DetailedHTMLProps<React.HTMLAttributes<HTMLElement>, HTMLElement> {
+interface IonIconProps {
   name?: string;
-  'aria-label'?: string;
+  class?: string;
+  [key: string]: any;
 }
-
-export {};
