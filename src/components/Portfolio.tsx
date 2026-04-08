@@ -80,6 +80,8 @@ export default function Portfolio() {
   const setupPortfolioFiltering = () => {
     const filterButtons = document.querySelectorAll("[data-filter-btn]");
     const selectItems = document.querySelectorAll("[data-select-item]");
+    const selectButton = document.querySelector("[data-select]");
+    const selectValue = document.querySelector("[data-selecct-value]");
     
     const updateFilter = (filterValue: string) => {
       setSelectedFilter(filterValue);
@@ -110,9 +112,29 @@ export default function Portfolio() {
       });
     });
 
+    // Toggle dropdown visibility on select button click
+    if (selectButton) {
+      selectButton.addEventListener("click", function (this: HTMLElement) {
+        this.classList.toggle("active");
+      });
+    }
+
     selectItems.forEach(item => {
       item.addEventListener("click", function (this: HTMLElement) {
         const filterValue = this.innerHTML.toLowerCase().trim();
+        const itemText = this.innerHTML;
+        
+        // Update the displayed value in the select button
+        if (selectValue) {
+          selectValue.innerHTML = itemText;
+        }
+        
+        // Close the dropdown
+        if (selectButton) {
+          selectButton.classList.remove("active");
+        }
+        
+        // Update the filter
         updateFilter(filterValue);
       });
     });
