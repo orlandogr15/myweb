@@ -20,13 +20,13 @@ export default function Portfolio() {
     // Load the portfolio stylesheet
     const link = document.createElement('link');
     link.rel = 'stylesheet';
-    link.href = '/assets/css/style.css';
+    link.href = './assets/css/style.css';
     document.head.appendChild(link);
 
     // Load the portfolio script with a slight delay to ensure DOM is ready
     const scriptTimer = setTimeout(() => {
       const script = document.createElement('script');
-      script.src = '/assets/js/script.js';
+      script.src = './assets/js/script.js';
       script.async = true;
       document.body.appendChild(script);
       

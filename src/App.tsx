@@ -13,7 +13,7 @@ function ReactApp() {
 
 function App() {
   return (
-    <Router>
+    <Router basename="/myweb/">
       <Routes>
         <Route path="/" element={<Portfolio />} />
         <Route path="/react-app" element={<ReactApp />} />
