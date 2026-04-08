@@ -7,7 +7,7 @@ export default function Portfolio() {
 
   useEffect(() => {
     // Initialize EmailJS
-    emailjs.init('7Hl4A9yAhp2U76O_-');
+    emailjs.init('iFOXmcm2_xhIZAw4K');
 
     // Load ionicons library
     if (!window.customElements.get('ion-icon')) {
@@ -128,7 +128,7 @@ export default function Portfolio() {
     const message = (form.elements.namedItem('message') as HTMLTextAreaElement).value;
 
     try {
-      await emailjs.send('service_portfolio', 'template_contact', {
+      await emailjs.send('service_gtzg6x4', 'template_djaflop', {
         from_name: fullname,
         user_email: email,
         message: message,
