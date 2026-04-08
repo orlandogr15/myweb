@@ -120,7 +120,7 @@ export default function Portfolio() {
         <aside className="sidebar" data-sidebar>
           <div className="sidebar-info">
             <figure className="avatar-box">
-              <img src="/assets/images/profile2.png" alt="Orlando Gutiérrez Rojo" width="80" />
+              <img src="./assets/images/profile2.png" alt="Orlando Gutiérrez Rojo" width="80" />
             </figure>
 
             <div className="info-content">
@@ -250,7 +250,7 @@ export default function Portfolio() {
               <ul className="service-list">
                 <li className="service-item">
                   <div className="service-icon-box">
-                    <img src="/assets/images/asset-graph.svg" alt="design icon" width="40" />
+                    <img src="./assets/images/asset-graph.svg" alt="design icon" width="40" />
                   </div>
                   <div className="service-content-box">
                     <h4 className="h4 service-item-title">Data Analysis</h4>
@@ -262,7 +262,7 @@ export default function Portfolio() {
 
                 <li className="service-item">
                   <div className="service-icon-box">
-                    <img src="/assets/images/asset-people.svg" alt="Web development icon" width="30" />
+                    <img src="./assets/images/asset-people.svg" alt="Web development icon" width="30" />
                   </div>
                   <div className="service-content-box">
                     <h4 className="h4 service-item-title">Customer Success</h4>
@@ -274,7 +274,7 @@ export default function Portfolio() {
 
                 <li className="service-item">
                   <div className="service-icon-box">
-                    <img src="/assets/images/asset-pad.svg" alt="mobile app icon" width="25" />
+                    <img src="./assets/images/asset-pad.svg" alt="mobile app icon" width="25" />
                   </div>
                   <div className="service-content-box">
                     <h4 className="h4 service-item-title">Research & Problem Solving</h4>
@@ -286,7 +286,7 @@ export default function Portfolio() {
 
                 <li className="service-item">
                   <div className="service-icon-box">
-                    <img src="/assets/images/asset-presentation.svg" alt="camera icon" width="40" />
+                    <img src="./assets/images/asset-presentation.svg" alt="camera icon" width="40" />
                   </div>
                   <div className="service-content-box">
                     <h4 className="h4 service-item-title">Communication</h4>
@@ -305,7 +305,7 @@ export default function Portfolio() {
                 <li className="testimonials-item">
                   <div className="content-card" data-testimonials-item>
                     <figure className="testimonials-avatar-box">
-                      <img src="/assets/images/avatar-1.png" alt="Daniel lewis" width="60" data-testimonials-avatar />
+                      <img src="./assets/images/avatar-1.png" alt="Daniel lewis" width="60" data-testimonials-avatar />
                     </figure>
                     <h4 className="h4 testimonials-item-title" data-testimonials-title>Daniel lewis</h4>
                     <div className="testimonials-text" data-testimonials-text>
@@ -321,7 +321,7 @@ export default function Portfolio() {
                 <li className="testimonials-item">
                   <div className="content-card" data-testimonials-item>
                     <figure className="testimonials-avatar-box">
-                      <img src="/assets/images/avatar-2.png" alt="Jessica miller" width="60" data-testimonials-avatar />
+                      <img src="./assets/images/avatar-2.png" alt="Jessica miller" width="60" data-testimonials-avatar />
                     </figure>
                     <h4 className="h4 testimonials-item-title" data-testimonials-title>Jessica miller</h4>
                     <div className="testimonials-text" data-testimonials-text>
@@ -337,7 +337,7 @@ export default function Portfolio() {
                 <li className="testimonials-item">
                   <div className="content-card" data-testimonials-item>
                     <figure className="testimonials-avatar-box">
-                      <img src="/assets/images/avatar-3.png" alt="Emily evans" width="60" data-testimonials-avatar />
+                      <img src="./assets/images/avatar-3.png" alt="Emily evans" width="60" data-testimonials-avatar />
                     </figure>
                     <h4 className="h4 testimonials-item-title" data-testimonials-title>Emily evans</h4>
                     <div className="testimonials-text" data-testimonials-text>
@@ -353,7 +353,7 @@ export default function Portfolio() {
                 <li className="testimonials-item">
                   <div className="content-card" data-testimonials-item>
                     <figure className="testimonials-avatar-box">
-                      <img src="/assets/images/avatar-4.png" alt="Henry william" width="60" data-testimonials-avatar />
+                      <img src="./assets/images/avatar-4.png" alt="Henry william" width="60" data-testimonials-avatar />
                     </figure>
                     <h4 className="h4 testimonials-item-title" data-testimonials-title>Henry william</h4>
                     <div className="testimonials-text" data-testimonials-text>
@@ -378,9 +378,9 @@ export default function Portfolio() {
                 </button>
                 <div className="modal-img-wrapper">
                   <figure className="modal-avatar-box">
-                    <img src="/assets/images/avatar-1.png" alt="Daniel lewis" width="80" data-modal-img />
+                    <img src="./assets/images/avatar-1.png" alt="Daniel lewis" width="80" data-modal-img />
                   </figure>
-                  <img src="/assets/images/icon-quote.svg" alt="quote icon" />
+                  <img src="./assets/images/icon-quote.svg" alt="quote icon" />
                 </div>
                 <div className="modal-content">
                   <h4 className="h3 modal-title" data-modal-title>Daniel lewis</h4>
@@ -401,32 +401,32 @@ export default function Portfolio() {
               <ul className="clients-list has-scrollbar">
                 <li className="clients-item">
                   <a href="#">
-                    <img src="/assets/images/logo-1-color.png" alt="client logo" />
+                    <img src="./assets/images/logo-1-color.png" alt="client logo" />
                   </a>
                 </li>
                 <li className="clients-item">
                   <a href="#">
-                    <img src="/assets/images/logo-2-color.png" alt="client logo" />
+                    <img src="./assets/images/logo-2-color.png" alt="client logo" />
                   </a>
                 </li>
                 <li className="clients-item">
                   <a href="#">
-                    <img src="/assets/images/logo-3-color.png" alt="client logo" />
+                    <img src="./assets/images/logo-3-color.png" alt="client logo" />
                   </a>
                 </li>
                 <li className="clients-item">
                   <a href="#">
-                    <img src="/assets/images/logo-4-color.png" alt="client logo" />
+                    <img src="./assets/images/logo-4-color.png" alt="client logo" />
                   </a>
                 </li>
                 <li className="clients-item">
                   <a href="#">
-                    <img src="/assets/images/logo-5-color.png" alt="client logo" />
+                    <img src="./assets/images/logo-5-color.png" alt="client logo" />
                   </a>
                 </li>
                 <li className="clients-item">
                   <a href="#">
-                    <img src="/assets/images/logo-6-color.png" alt="client logo" />
+                    <img src="./assets/images/logo-6-color.png" alt="client logo" />
                   </a>
                 </li>
               </ul>
@@ -591,7 +591,7 @@ export default function Portfolio() {
                       <div className="project-item-icon-box">
                         <ion-icon name="eye-outline"></ion-icon>
                       </div>
-                      <img src="/assets/images/project-1.jpg" alt="locos" loading="lazy" />
+                      <img src="./assets/images/project-1.jpg" alt="locos" loading="lazy" />
                     </figure>
                     <h3 className="project-title">Low-Redshift Cluster Optical Survey (I and II): Initial Release and Complementary Data</h3>
                     <p className="project-category">Data Analysis</p>
@@ -604,7 +604,7 @@ export default function Portfolio() {
                       <div className="project-item-icon-box">
                         <ion-icon name="eye-outline"></ion-icon>
                       </div>
-                      <img src="/assets/images/project-2.png" alt="gcpd" loading="lazy" />
+                      <img src="./assets/images/project-2.png" alt="gcpd" loading="lazy" />
                     </figure>
                     <h3 className="project-title">Classify Galaxies with Python and DS9</h3>
                     <p className="project-category">Programming</p>
