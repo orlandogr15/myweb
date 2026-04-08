@@ -43,6 +43,7 @@ jobs:
           git checkout --orphan gh-pages
           git rm -rf .
           cp -r dist/* .
+          cp dist/.nojekyll . 2>/dev/null || echo "" > .nojekyll
           git add .
           git commit -m "Deploy to GitHub Pages" || true
           git push -f origin gh-pages
