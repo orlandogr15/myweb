@@ -1,6 +1,8 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 export default function Portfolio() {
+  const [selectedFilter, setSelectedFilter] = useState('all');
+
   useEffect(() => {
     // Load ionicons library
     if (!window.customElements.get('ion-icon')) {
@@ -56,6 +58,9 @@ export default function Portfolio() {
 
       // Run the fix after a small delay to ensure script.js content is loaded
       setTimeout(fixNavigation, 200);
+
+      // Setup portfolio filtering
+      setupPortfolioFiltering();
     }, 100);
 
     return () => {
@@ -67,6 +72,47 @@ export default function Portfolio() {
     };
   }, []);
 
+  const setupPortfolioFiltering = () => {
+    const filterButtons = document.querySelectorAll("[data-filter-btn]");
+    const selectItems = document.querySelectorAll("[data-select-item]");
+    
+    const updateFilter = (filterValue: string) => {
+      setSelectedFilter(filterValue);
+      
+      // Update active button styling for filter buttons
+      filterButtons.forEach(btn => {
+        if (btn.innerHTML.toLowerCase().trim() === filterValue) {
+          btn.classList.add("active");
+        } else {
+          btn.classList.remove("active");
+        }
+      });
+      
+      // Update active styling for select items
+      selectItems.forEach(item => {
+        if (item.innerHTML.toLowerCase().trim() === filterValue) {
+          item.classList.add("active");
+        } else {
+          item.classList.remove("active");
+        }
+      });
+    };
+
+    filterButtons.forEach(button => {
+      button.addEventListener("click", function (this: HTMLElement) {
+        const filterValue = this.innerHTML.toLowerCase().trim();
+        updateFilter(filterValue);
+      });
+    });
+
+    selectItems.forEach(item => {
+      item.addEventListener("click", function (this: HTMLElement) {
+        const filterValue = this.innerHTML.toLowerCase().trim();
+        updateFilter(filterValue);
+      });
+    });
+  };
+
   return (
     <div id="portfolio-container">
       <main>
@@ -74,7 +120,7 @@ export default function Portfolio() {
         <aside className="sidebar" data-sidebar>
           <div className="sidebar-info">
             <figure className="avatar-box">
-              <img src="/assets/images/my-avatar.png" alt="Orlando Gutiérrez Rojo" width="80" />
+              <img src="/assets/images/profile2.png" alt="Orlando Gutiérrez Rojo" width="80" />
             </figure>
 
             <div className="info-content">
@@ -101,17 +147,17 @@ export default function Portfolio() {
                   <a href="mailto:ogutierrezrojo@gmail.com" className="contact-link">ogutierrezrojo@gmail.com</a>
                 </div>
               </li>
-
+              {/*
               <li className="contact-item">
                 <div className="icon-box">
                   <ion-icon name="phone-portrait-outline"></ion-icon>
                 </div>
                 <div className="contact-info">
                   <p className="contact-title">Phone</p>
-                  <a href="tel:+12133522795" className="contact-link">+52 (667) 272-0363</a>
+                  <a href="tel:+526672720363" className="contact-link">+52 (667) 272-0363</a>
                 </div>
               </li>
-
+              
               <li className="contact-item">
                 <div className="icon-box">
                   <ion-icon name="calendar-outline"></ion-icon>
@@ -121,6 +167,7 @@ export default function Portfolio() {
                   <time dateTime="1982-06-23">March 3, 1995</time>
                 </div>
               </li>
+              */}
 
               <li className="contact-item">
                 <div className="icon-box">
@@ -138,17 +185,12 @@ export default function Portfolio() {
             <ul className="social-list">
               <li className="social-item">
                 <a href="https://www.linkedin.com/in/orlando-gutierrez-rojo/" className="social-link">
-                  <ion-icon name="logo-facebook"></ion-icon>
+                  <ion-icon name="logo-linkedin"></ion-icon>
                 </a>
               </li>
               <li className="social-item">
                 <a href="https://github.com/orlandogr15" className="social-link">
-                  <ion-icon name="logo-twitter"></ion-icon>
-                </a>
-              </li>
-              <li className="social-item">
-                <a href="#" className="social-link">
-                  <ion-icon name="logo-instagram"></ion-icon>
+                  <ion-icon name="logo-github"></ion-icon>
                 </a>
               </li>
             </ul>
@@ -169,9 +211,6 @@ export default function Portfolio() {
                 <button className="navbar-link" data-nav-link>Portfolio</button>
               </li>
               <li className="navbar-item">
-                <button className="navbar-link" data-nav-link>Blog</button>
-              </li>
-              <li className="navbar-item">
                 <button className="navbar-link" data-nav-link>Contact</button>
               </li>
             </ul>
@@ -185,71 +224,81 @@ export default function Portfolio() {
 
             <section className="about-text">
               <p>
-                I'm Creative Director and UI/UX Designer from Sydney, Australia, working in web development and print media.
-                I enjoy turning complex problems into simple, beautiful and intuitive designs.
+                I have versatile experience due to the need to translate data required in structured data workflows
+                 in both academic and professional settings, as well as in communicating information to colleagues and 
+                 clients through digital channels, or to the scientific community through research articles.
               </p>
               <p>
-                My job is to build your website so that it is functional and user-friendly but at the same time attractive.
-                Moreover, I add personal touch to your product and make sure that is eye-catching and easy to use. My aim is to bring
-                across your message and identity in the most creative way. I created web design for many famous brand companies.
+                As a Data Analyst at INAOE, I was able to leverage the data management skills I acquired during my 
+                undergraduate thesis project, where I developed pipelines in Python to evaluate predictive models 
+                against real scientific data.
+              </p>
+              <p>
+                As a Customer Success Manager, I was involved in the collection, validation, and analysis of data in HR systems such as payroll,
+                 time tracking, and employee records. Furthermore, I developed a strong analytical mindset by diagnosing 
+                 data inconsistencies, validating system results, and testing the functionality of Software-as-a-Service (SaaS) platforms.
+              </p>
+              <p>
+                I am currently strengthening my SQL skills, deepening my knowledge of Machine Learning, and expanding my
+                 object-oriented programming skills to deliver scalable, data-driven solutions and pursue a career as a data scientist.
               </p>
             </section>
 
             {/* Services Section */}
             <section className="service">
-              <h3 className="h3 service-title">What i'm doing</h3>
+              <h3 className="h3 service-title">What I do</h3>
               <ul className="service-list">
                 <li className="service-item">
                   <div className="service-icon-box">
-                    <img src="/assets/images/icon-design.svg" alt="design icon" width="40" />
+                    <img src="/assets/images/asset-graph.svg" alt="design icon" width="40" />
                   </div>
                   <div className="service-content-box">
-                    <h4 className="h4 service-item-title">Web design</h4>
+                    <h4 className="h4 service-item-title">Data Analysis</h4>
                     <p className="service-item-text">
-                      The most modern and high-quality design made at a professional level.
+                      Transforming complex data into actionable insights through statistical analysis, visualization, and scalable data workflows.
                     </p>
                   </div>
                 </li>
 
                 <li className="service-item">
                   <div className="service-icon-box">
-                    <img src="/assets/images/icon-dev.svg" alt="Web development icon" width="40" />
+                    <img src="/assets/images/asset-people.svg" alt="Web development icon" width="30" />
                   </div>
                   <div className="service-content-box">
-                    <h4 className="h4 service-item-title">Web development</h4>
+                    <h4 className="h4 service-item-title">Customer Success</h4>
                     <p className="service-item-text">
-                      High-quality development of sites at the professional level.
+                      Driving client satisfaction and retention by aligning customer goals with data-driven strategies and proactive relationship management.
                     </p>
                   </div>
                 </li>
 
                 <li className="service-item">
                   <div className="service-icon-box">
-                    <img src="/assets/images/icon-app.svg" alt="mobile app icon" width="40" />
+                    <img src="/assets/images/asset-pad.svg" alt="mobile app icon" width="25" />
                   </div>
                   <div className="service-content-box">
-                    <h4 className="h4 service-item-title">Mobile apps</h4>
+                    <h4 className="h4 service-item-title">Research & Problem Solving</h4>
                     <p className="service-item-text">
-                      Professional development of applications for iOS and Android.
+                      Methodological rigor and critical thinking to address complex challenges and drive innovative solutions.
                     </p>
                   </div>
                 </li>
 
                 <li className="service-item">
                   <div className="service-icon-box">
-                    <img src="/assets/images/icon-photo.svg" alt="camera icon" width="40" />
+                    <img src="/assets/images/asset-presentation.svg" alt="camera icon" width="40" />
                   </div>
                   <div className="service-content-box">
-                    <h4 className="h4 service-item-title">Photography</h4>
+                    <h4 className="h4 service-item-title">Communication</h4>
                     <p className="service-item-text">
-                      I make high-quality photos of any category at a professional level.
+                      I love translating technical insights into actionable outcomes, documentation, and client-facing support.
                     </p>
                   </div>
                 </li>
               </ul>
             </section>
 
-            {/* Testimonials Section */}
+            {/* Testimonials Section 
             <section className="testimonials">
               <h3 className="h3 testimonials-title">Testimonials</h3>
               <ul className="testimonials-list has-scrollbar">
@@ -318,8 +367,9 @@ export default function Portfolio() {
                 </li>
               </ul>
             </section>
-
-            {/* Modal Container */}
+            */}            
+            
+            {/* Modal Container 
             <div className="modal-container" data-modal-container>
               <div className="overlay" data-overlay></div>
               <section className="testimonials-modal">
@@ -343,8 +393,9 @@ export default function Portfolio() {
                 </div>
               </section>
             </div>
-
-            {/* Clients */}
+            */}
+            
+            {/* Clients 
             <section className="clients">
               <h3 className="h3 clients-title">Clients</h3>
               <ul className="clients-list has-scrollbar">
@@ -380,6 +431,7 @@ export default function Portfolio() {
                 </li>
               </ul>
             </section>
+            */}
           </article>
 
           {/* Resume Page */}
@@ -398,27 +450,10 @@ export default function Portfolio() {
 
               <ol className="timeline-list">
                 <li className="timeline-item">
-                  <h4 className="h4 timeline-item-title">University school of the arts</h4>
-                  <span>2007 — 2008</span>
+                  <h4 className="h4 timeline-item-title">Universidad Autónoma de Sinaloa</h4>
+                  <span>2013 — 2019</span>
                   <p className="timeline-text">
-                    Nemo enims ipsam voluptatem, blanditiis praesentium voluptum delenit atque corrupti, quos dolores et
-                    quas molestias exceptur.
-                  </p>
-                </li>
-
-                <li className="timeline-item">
-                  <h4 className="h4 timeline-item-title">New york academy of art</h4>
-                  <span>2006 — 2007</span>
-                  <p className="timeline-text">
-                    Ratione voluptatem sequi nesciunt, facere quisquams facere menda ossimus, omnis voluptas assumenda est omnis..
-                  </p>
-                </li>
-
-                <li className="timeline-item">
-                  <h4 className="h4 timeline-item-title">High school of art and design</h4>
-                  <span>2002 — 2004</span>
-                  <p className="timeline-text">
-                    Duis aute irure dolor in reprehenderit in voluptate, quila voluptas mag odit aut fugit, sed consequuntur magni dolores eos.
+                    Bachelor's degree in Astronomy.
                   </p>
                 </li>
               </ol>
@@ -434,26 +469,29 @@ export default function Portfolio() {
 
               <ol className="timeline-list">
                 <li className="timeline-item">
-                  <h4 className="h4 timeline-item-title">Creative director</h4>
-                  <span>2015 — Present</span>
+                  <h4 className="h4 timeline-item-title">Data Analyst</h4>
+                  <h5 className="h5 timeline-item-title">Instituto Nacional de Astrofísica, Óptica y Electrónica</h5>
+                  <span>2023 — 2025</span>
                   <p className="timeline-text">
-                    Nemo enim ipsam voluptatem blanditiis praesentium voluptum delenit atque corrupti, quos dolores et qvuas molestias exceptur.
+                    Data Analyst, Curator, Technician, and Collaborator on various scientific research projects.                  
                   </p>
                 </li>
 
                 <li className="timeline-item">
-                  <h4 className="h4 timeline-item-title">Art director</h4>
-                  <span>2013 — 2015</span>
+                  <h4 className="h4 timeline-item-title">Customer Success Manager</h4>
+                  <h5 className="h5 timeline-item-title">Izytech</h5>
+                  <span>2022 — 2023</span>
                   <p className="timeline-text">
-                    Nemo enims ipsam voluptatem, blanditiis praesentium voluptum delenit atque corrupti, quos dolores et quas molestias exceptur.
+                    Customer Success Manager (CSM) for Software-as-a-Service (SaaS) platforms focused on Human Resources operations such as time and shift management processing, payroll and electronic signatures.
                   </p>
                 </li>
 
                 <li className="timeline-item">
-                  <h4 className="h4 timeline-item-title">Web designer</h4>
-                  <span>2010 — 2013</span>
+                  <h4 className="h4 timeline-item-title">Call Center Sales Executive</h4>
+                  <h5 className="h5 timeline-item-title">Coppel</h5>                  
+                  <span>2018 — 2019</span>
                   <p className="timeline-text">
-                    Nemo enims ipsam voluptatem, blanditiis praesentium voluptum delenit atque corrupti, quos dolores et quas molestias exceptur.
+                    Assistance to online shoppers and customer service via telephone.
                   </p>
                 </li>
               </ol>
@@ -465,17 +503,17 @@ export default function Portfolio() {
               <ul className="skills-list content-card">
                 <li className="skills-item">
                   <div className="title-wrapper">
-                    <h5 className="h5">Web design</h5>
-                    <data value="80">80%</data>
+                    <h5 className="h5">Data Analysis</h5>
+                    <data value="50">50%</data>
                   </div>
                   <div className="skill-progress-bg">
-                    <div className="skill-progress-fill" style={{width: "80%"}}></div>
+                    <div className="skill-progress-fill" style={{width: "50%"}}></div>
                   </div>
                 </li>
 
                 <li className="skills-item">
                   <div className="title-wrapper">
-                    <h5 className="h5">Graphic design</h5>
+                    <h5 className="h5">Data Visualization</h5>
                     <data value="70">70%</data>
                   </div>
                   <div className="skill-progress-bg">
@@ -485,21 +523,21 @@ export default function Portfolio() {
 
                 <li className="skills-item">
                   <div className="title-wrapper">
-                    <h5 className="h5">Branding</h5>
-                    <data value="90">90%</data>
+                    <h5 className="h5">Python</h5>
+                    <data value="60">60%</data>
                   </div>
                   <div className="skill-progress-bg">
-                    <div className="skill-progress-fill" style={{width: "90%"}}></div>
+                    <div className="skill-progress-fill" style={{width: "60%"}}></div>
                   </div>
                 </li>
 
                 <li className="skills-item">
                   <div className="title-wrapper">
-                    <h5 className="h5">WordPress</h5>
-                    <data value="50">50%</data>
+                    <h5 className="h5">Data Processing</h5>
+                    <data value="80">80%</data>
                   </div>
                   <div className="skill-progress-bg">
-                    <div className="skill-progress-fill" style={{width: "50%"}}></div>
+                    <div className="skill-progress-fill" style={{width: "80%"}}></div>
                   </div>
                 </li>
               </ul>
@@ -518,13 +556,10 @@ export default function Portfolio() {
                   <button className="active" data-filter-btn>All</button>
                 </li>
                 <li className="filter-item">
-                  <button data-filter-btn>Web design</button>
+                  <button data-filter-btn>Data Analysis</button>
                 </li>
                 <li className="filter-item">
-                  <button data-filter-btn>Applications</button>
-                </li>
-                <li className="filter-item">
-                  <button data-filter-btn>Web development</button>
+                  <button data-filter-btn>Programming</button>
                 </li>
               </ul>
 
@@ -541,247 +576,42 @@ export default function Portfolio() {
                     <button data-select-item>All</button>
                   </li>
                   <li className="select-item">
-                    <button data-select-item>Web design</button>
+                    <button data-select-item>Data Analysis</button>
                   </li>
                   <li className="select-item">
-                    <button data-select-item>Applications</button>
-                  </li>
-                  <li className="select-item">
-                    <button data-select-item>Web development</button>
+                    <button data-select-item>Programming</button>
                   </li>
                 </ul>
               </div>
 
               <ul className="project-list">
-                <li className="project-item active" data-filter-item data-category="web development">
-                  <a href="#">
+                <li className="project-item active" data-filter-item data-category="data analysis" style={{display: selectedFilter === 'all' || selectedFilter === 'data analysis' ? 'block' : 'none'}}>
+                  <a href="https://doi.org/10.5281/zenodo.15054459" target="_blank" rel="noopener noreferrer">
                     <figure className="project-img">
                       <div className="project-item-icon-box">
                         <ion-icon name="eye-outline"></ion-icon>
                       </div>
-                      <img src="/assets/images/project-1.jpg" alt="finance" loading="lazy" />
+                      <img src="/assets/images/project-1.jpg" alt="locos" loading="lazy" />
                     </figure>
-                    <h3 className="project-title">Finance</h3>
-                    <p className="project-category">Web development</p>
+                    <h3 className="project-title">Low-Redshift Cluster Optical Survey (I and II): Initial Release and Complementary Data</h3>
+                    <p className="project-category">Data Analysis</p>
                   </a>
                 </li>
 
-                <li className="project-item active" data-filter-item data-category="web development">
-                  <a href="#">
+                <li className="project-item active" data-filter-item data-category="programming" style={{display: selectedFilter === 'all' || selectedFilter === 'programming' ? 'block' : 'none'}}>
+                  <a href="https://github.com/orlandogr15/Classify-Galaxies-Python-DS9" target="_blank" rel="noopener noreferrer">
                     <figure className="project-img">
                       <div className="project-item-icon-box">
                         <ion-icon name="eye-outline"></ion-icon>
                       </div>
-                      <img src="/assets/images/project-2.png" alt="orizon" loading="lazy" />
+                      <img src="/assets/images/project-2.png" alt="gcpd" loading="lazy" />
                     </figure>
-                    <h3 className="project-title">Orizon</h3>
-                    <p className="project-category">Web development</p>
+                    <h3 className="project-title">Classify Galaxies with Python and DS9</h3>
+                    <p className="project-category">Programming</p>
                   </a>
                 </li>
 
-                <li className="project-item active" data-filter-item data-category="web design">
-                  <a href="#">
-                    <figure className="project-img">
-                      <div className="project-item-icon-box">
-                        <ion-icon name="eye-outline"></ion-icon>
-                      </div>
-                      <img src="/assets/images/project-3.jpg" alt="fundo" loading="lazy" />
-                    </figure>
-                    <h3 className="project-title">Fundo</h3>
-                    <p className="project-category">Web design</p>
-                  </a>
-                </li>
 
-                <li className="project-item active" data-filter-item data-category="applications">
-                  <a href="#">
-                    <figure className="project-img">
-                      <div className="project-item-icon-box">
-                        <ion-icon name="eye-outline"></ion-icon>
-                      </div>
-                      <img src="/assets/images/project-4.png" alt="brawlhalla" loading="lazy" />
-                    </figure>
-                    <h3 className="project-title">Brawlhalla</h3>
-                    <p className="project-category">Applications</p>
-                  </a>
-                </li>
-
-                <li className="project-item active" data-filter-item data-category="web design">
-                  <a href="#">
-                    <figure className="project-img">
-                      <div className="project-item-icon-box">
-                        <ion-icon name="eye-outline"></ion-icon>
-                      </div>
-                      <img src="/assets/images/project-5.png" alt="dsm." loading="lazy" />
-                    </figure>
-                    <h3 className="project-title">DSM.</h3>
-                    <p className="project-category">Web design</p>
-                  </a>
-                </li>
-
-                <li className="project-item active" data-filter-item data-category="web design">
-                  <a href="#">
-                    <figure className="project-img">
-                      <div className="project-item-icon-box">
-                        <ion-icon name="eye-outline"></ion-icon>
-                      </div>
-                      <img src="/assets/images/project-6.png" alt="metaspark" loading="lazy" />
-                    </figure>
-                    <h3 className="project-title">MetaSpark</h3>
-                    <p className="project-category">Web design</p>
-                  </a>
-                </li>
-
-                <li className="project-item active" data-filter-item data-category="web development">
-                  <a href="#">
-                    <figure className="project-img">
-                      <div className="project-item-icon-box">
-                        <ion-icon name="eye-outline"></ion-icon>
-                      </div>
-                      <img src="/assets/images/project-7.png" alt="summary" loading="lazy" />
-                    </figure>
-                    <h3 className="project-title">Summary</h3>
-                    <p className="project-category">Web development</p>
-                  </a>
-                </li>
-
-                <li className="project-item active" data-filter-item data-category="applications">
-                  <a href="#">
-                    <figure className="project-img">
-                      <div className="project-item-icon-box">
-                        <ion-icon name="eye-outline"></ion-icon>
-                      </div>
-                      <img src="/assets/images/project-8.jpg" alt="task manager" loading="lazy" />
-                    </figure>
-                    <h3 className="project-title">Task Manager</h3>
-                    <p className="project-category">Applications</p>
-                  </a>
-                </li>
-
-                <li className="project-item active" data-filter-item data-category="web development">
-                  <a href="#">
-                    <figure className="project-img">
-                      <div className="project-item-icon-box">
-                        <ion-icon name="eye-outline"></ion-icon>
-                      </div>
-                      <img src="/assets/images/project-9.png" alt="arrival" loading="lazy" />
-                    </figure>
-                    <h3 className="project-title">Arrival</h3>
-                    <p className="project-category">Web development</p>
-                  </a>
-                </li>
-              </ul>
-            </section>
-          </article>
-
-          {/* Blog Page */}
-          <article className="blog" data-page="blog">
-            <header>
-              <h2 className="h2 article-title">Blog</h2>
-            </header>
-
-            <section className="blog-posts">
-              <ul className="blog-posts-list">
-                <li className="blog-post-item">
-                  <a href="#">
-                    <figure className="blog-banner-box">
-                      <img src="/assets/images/blog-1.jpg" alt="Design conferences in 2022" loading="lazy" />
-                    </figure>
-                    <div className="blog-content">
-                      <div className="blog-meta">
-                        <p className="blog-category">Design</p>
-                        <span className="dot"></span>
-                        <time dateTime="2022-02-23">Fab 23, 2022</time>
-                      </div>
-                      <h3 className="h3 blog-item-title">Design conferences in 2022</h3>
-                      <p className="blog-text">Veritatis et quasi architecto beatae vitae dicta sunt, explicabo.</p>
-                    </div>
-                  </a>
-                </li>
-
-                <li className="blog-post-item">
-                  <a href="#">
-                    <figure className="blog-banner-box">
-                      <img src="/assets/images/blog-2.jpg" alt="Best fonts every designer" loading="lazy" />
-                    </figure>
-                    <div className="blog-content">
-                      <div className="blog-meta">
-                        <p className="blog-category">Design</p>
-                        <span className="dot"></span>
-                        <time dateTime="2022-02-23">Fab 23, 2022</time>
-                      </div>
-                      <h3 className="h3 blog-item-title">Best fonts every designer</h3>
-                      <p className="blog-text">Sed ut perspiciatis, nam libero tempore, cum soluta nobis est eligendi.</p>
-                    </div>
-                  </a>
-                </li>
-
-                <li className="blog-post-item">
-                  <a href="#">
-                    <figure className="blog-banner-box">
-                      <img src="/assets/images/blog-3.jpg" alt="Design digest #80" loading="lazy" />
-                    </figure>
-                    <div className="blog-content">
-                      <div className="blog-meta">
-                        <p className="blog-category">Design</p>
-                        <span className="dot"></span>
-                        <time dateTime="2022-02-23">Fab 23, 2022</time>
-                      </div>
-                      <h3 className="h3 blog-item-title">Design digest #80</h3>
-                      <p className="blog-text">Excepteur sint occaecat cupidatat no proident, quis nostrum exercitationem ullam corporis suscipit.</p>
-                    </div>
-                  </a>
-                </li>
-
-                <li className="blog-post-item">
-                  <a href="#">
-                    <figure className="blog-banner-box">
-                      <img src="/assets/images/blog-4.jpg" alt="UI interactions of the week" loading="lazy" />
-                    </figure>
-                    <div className="blog-content">
-                      <div className="blog-meta">
-                        <p className="blog-category">Design</p>
-                        <span className="dot"></span>
-                        <time dateTime="2022-02-23">Fab 23, 2022</time>
-                      </div>
-                      <h3 className="h3 blog-item-title">UI interactions of the week</h3>
-                      <p className="blog-text">Enim ad minim veniam, consectetur adipiscing elit, quis nostrud exercitation ullamco laboris nisi.</p>
-                    </div>
-                  </a>
-                </li>
-
-                <li className="blog-post-item">
-                  <a href="#">
-                    <figure className="blog-banner-box">
-                      <img src="/assets/images/blog-5.jpg" alt="The forgotten art of spacing" loading="lazy" />
-                    </figure>
-                    <div className="blog-content">
-                      <div className="blog-meta">
-                        <p className="blog-category">Design</p>
-                        <span className="dot"></span>
-                        <time dateTime="2022-02-23">Fab 23, 2022</time>
-                      </div>
-                      <h3 className="h3 blog-item-title">The forgotten art of spacing</h3>
-                      <p className="blog-text">Maxime placeat, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                    </div>
-                  </a>
-                </li>
-
-                <li className="blog-post-item">
-                  <a href="#">
-                    <figure className="blog-banner-box">
-                      <img src="/assets/images/blog-6.jpg" alt="Design digest #79" loading="lazy" />
-                    </figure>
-                    <div className="blog-content">
-                      <div className="blog-meta">
-                        <p className="blog-category">Design</p>
-                        <span className="dot"></span>
-                        <time dateTime="2022-02-23">Fab 23, 2022</time>
-                      </div>
-                      <h3 className="h3 blog-item-title">Design digest #79</h3>
-                      <p className="blog-text">Optio cumque nihil impedit uo minus quod maxime placeat, velit esse cillum.</p>
-                    </div>
-                  </a>
-                </li>
               </ul>
             </section>
           </article>
@@ -792,6 +622,7 @@ export default function Portfolio() {
               <h2 className="h2 article-title">Contact</h2>
             </header>
 
+            {/*
             <section className="mapbox" data-mapbox>
               <figure>
                 <iframe
@@ -804,6 +635,7 @@ export default function Portfolio() {
                 ></iframe>
               </figure>
             </section>
+            */}
 
             <section className="contact-form">
               <h3 className="h3 form-title">Contact Form</h3>
