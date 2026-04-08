@@ -5,10 +5,6 @@ on:
     branches:
       - master
       - template-integration
-  pull_request:
-    branches:
-      - master
-      - template-integration
 
 permissions:
   contents: read
@@ -43,7 +39,6 @@ jobs:
   deploy:
     needs: build
     runs-on: ubuntu-latest
-    if: github.event_name == 'push' && (github.ref == 'refs/heads/master' || github.ref == 'refs/heads/template-integration')
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
