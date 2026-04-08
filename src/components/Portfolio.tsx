@@ -1,9 +1,14 @@
 import { useEffect, useState } from 'react';
+import emailjs from '@emailjs/browser';
 
 export default function Portfolio() {
   const [selectedFilter, setSelectedFilter] = useState('all');
+  const [formStatus, setFormStatus] = useState('');
 
   useEffect(() => {
+    // Initialize EmailJS
+    emailjs.init('7Hl4A9yAhp2U76O_-');
+
     // Load ionicons library
     if (!window.customElements.get('ion-icon')) {
       const ioniconsScript = document.createElement('script');
@@ -111,6 +116,33 @@ export default function Portfolio() {
         updateFilter(filterValue);
       });
     });
+  };
+
+  const handleContactSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setFormStatus('Sending...');
+
+    const form = e.currentTarget;
+    const fullname = (form.elements.namedItem('fullname') as HTMLInputElement).value;
+    const email = (form.elements.namedItem('email') as HTMLInputElement).value;
+    const message = (form.elements.namedItem('message') as HTMLTextAreaElement).value;
+
+    try {
+      await emailjs.send('service_portfolio', 'template_contact', {
+        from_name: fullname,
+        user_email: email,
+        message: message,
+        to_email: 'ogutierrezrojo@gmail.com',
+      });
+
+      setFormStatus('✓ Message sent successfully!');
+      form.reset();
+      setTimeout(() => setFormStatus(''), 3000);
+    } catch (error) {
+      console.error('Email error:', error);
+      setFormStatus('✗ Failed to send message. Please try again.');
+      setTimeout(() => setFormStatus(''), 3000);
+    }
   };
 
   return (
@@ -591,7 +623,7 @@ export default function Portfolio() {
                       <div className="project-item-icon-box">
                         <ion-icon name="eye-outline"></ion-icon>
                       </div>
-                      <img src="./assets/images/project-1.jpg" alt="locos" loading="lazy" />
+                      <img src="./assets/images/LOCOS.png" alt="locos" loading="lazy" />
                     </figure>
                     <h3 className="project-title">Low-Redshift Cluster Optical Survey (I and II): Initial Release and Complementary Data</h3>
                     <p className="project-category">Data Analysis</p>
@@ -604,7 +636,7 @@ export default function Portfolio() {
                       <div className="project-item-icon-box">
                         <ion-icon name="eye-outline"></ion-icon>
                       </div>
-                      <img src="./assets/images/project-2.png" alt="gcpd" loading="lazy" />
+                      <img src="./assets/images/CGPD.png" alt="gcpd" loading="lazy" />
                     </figure>
                     <h3 className="project-title">Classify Galaxies with Python and DS9</h3>
                     <p className="project-category">Programming</p>
@@ -640,7 +672,7 @@ export default function Portfolio() {
             <section className="contact-form">
               <h3 className="h3 form-title">Contact Form</h3>
 
-              <form action="#" className="form" data-form>
+              <form onSubmit={handleContactSubmit} className="form" data-form>
                 <div className="input-wrapper">
                   <input type="text" name="fullname" className="form-input" placeholder="Full name" required data-form-input />
                   <input type="email" name="email" className="form-input" placeholder="Email address" required data-form-input />
@@ -648,10 +680,12 @@ export default function Portfolio() {
 
                 <textarea name="message" className="form-input" placeholder="Your Message" required data-form-input></textarea>
 
-                <button className="form-btn" type="submit" disabled data-form-btn>
+                <button className="form-btn" type="submit" data-form-btn>
                   <ion-icon name="paper-plane"></ion-icon>
                   <span>Send Message</span>
                 </button>
+
+                {formStatus && <p style={{marginTop: '1rem', textAlign: 'center', fontSize: '0.9rem'}}>{formStatus}</p>}
               </form>
             </section>
           </article>
